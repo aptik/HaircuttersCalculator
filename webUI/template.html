@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>HaircuttersCalculator demo WebUI</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="Arthur Halma">
+
+  <!-- Im used bootstrap to not waste time on own styiling -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+  <form role="form" id="HaircuttersCalculatorForm">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>HaircuttersCalculator sample WebUI</h1>
+          <p>Depends on paramaters like population of country HaircuttersCalculator will calculate approximate number of haircutters needed in this country.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Information of residents:</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="overall_population">Population:</label>
+          <div class="input-group">
+            <input type="text" id="overall_population" class="form-control" value="<?php print $params['population']; ?>">
+            <span class="input-group-addon">Residents</span>
+            <input type="text" readonly id="population" name="population" class="form-control" value="<?php print $params['population']; ?>">
+          </div>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="man_rate">Mans rate:</label>
+                <div class="input-group">
+                  <input type="text" id="man_rate" name="man_rate" class="form-control" value="<?php print $params['man_rate']; ?>">
+                  <span class="input-group-addon">%</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="woman_rate">Womans rate:</label>
+                <div class="input-group">
+                  <input type="text" id="woman_rate" class="form-control" value="<?php print 100 - $params['man_rate']; ?>">
+                  <span class="input-group-addon">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="childrens">Childrens:</label>
+                <div class="input-group">
+                  <input type="text" id="childrens" class="form-control" value="0">
+                  <span class="input-group-addon">childs</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="bald">Bald:</label>
+                <div class="input-group">
+                  <input type="text" id="bald" class="form-control" value="0">
+                  <span class="input-group-addon">people</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="shear_time_man">Time to shear:</label>
+                <div class="input-group">
+                  <input type="text" id="shear_time_man" name="shear_time_man" class="form-control" value="<?php print $params['shear_time_man']; ?>">
+                  <span class="input-group-addon">minutes</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="shear_time_woman">Time to shear:</label>
+                <div class="input-group">
+                  <input type="text" id="shear_time_woman" name="shear_time_woman" class="form-control" value="<?php print $params['shear_time_woman']; ?>">
+                  <span class="input-group-addon">minutes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Every haircutter have:</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label for="haircutters_working_days">Working days in the year:</label>
+          <div class="input-group">
+            <input type="text" id="haircutters_working_days" name="haircutters_working_days" class="form-control" value="<?php print $params['haircutters_working_days']; ?>">
+            <span class="input-group-addon">Days</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="vacations">Vacations:</label>
+          <div class="input-group">
+            <input type="text" id="vacations" class="form-control"  value="20">
+            <span class="input-group-addon">Days</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="hollidays">Hollidays:</label>
+          <div class="input-group">
+            <input type="text" id="hollidays" class="form-control"  value="0">
+            <span class="input-group-addon">Days</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="sick">Sick days:</label>
+          <div class="input-group">
+            <input type="text" id="sick" class="form-control"  value="0">
+            <span class="input-group-addon">Days</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <label for="haircutters_working_hours">Working hours per day:</label>
+          <div class="input-group">
+            <input type="text" id="haircutters_working_hours" class="form-control" value="8">
+            <span class="input-group-addon">Hours</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="coffe_breaks">Cofee breaks:</label>
+          <div class="input-group">
+            <input type="text" id="coffe_breaks" class="form-control"  value="10">
+            <span class="input-group-addon">% overall time</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="haircutters_working_minutes">Minutes:</label>
+          <div class="input-group">
+            <input type="text" id="haircutters_working_minutes" name="haircutters_working_minutes" class="form-control"  value="<?php print $params['haircutters_working_minutes']; ?>">
+            <span class="input-group-addon">Minutes</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Haircutters needed: <span class="label label-info" id="results"><?php print $results; ?></span></h2>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script>
+    //I'm' not write the code in a separate script just for better accessed it.
+    //In any case, this is just an example.
+    var $form = $('#HaircuttersCalculatorForm')
+
+    var inputs = {
+      'overall_population': $('input#overall_population',$form),
+      'population': $('input#population',$form),
+      'man_rate': $('input#man_rate',$form),
+      'woman_rate': $('input#woman_rate',$form),
+      'childrens': $('input#childrens',$form),
+      'bald': $('input#bald',$form),
+      'shear_time_man': $('input#shear_time_man',$form),
+      'shear_time_woman': $('input#shear_time_woman',$form),
+      'haircutters_working_days': $('input#haircutters_working_days',$form),
+      'vacations': $('input#vacations',$form),
+      'hollidays': $('input#hollidays',$form),
+      'sick': $('input#sick',$form),
+      'haircutters_working_hours': $('input#haircutters_working_hours',$form),
+      'coffe_breaks': $('input#coffe_breaks',$form),
+      'haircutters_working_minutes': $('input#haircutters_working_minutes',$form)
+    };
+    var $results = $('#results')
+    var tmpValue = null
+
+    $form.on('keydown','input[type=text]',function(_event){
+      tmpValue = $(_event.currentTarget).val();
+    })
+    $form.on('keyup','input[type=text]',recalculate)
+
+    function recalculate(_event){
+      var $input = $(_event.currentTarget)
+
+      if(!validate($input.attr('id'), $input)){
+        return;
+      }
+
+      switch($input.attr('id'))
+      {
+      case 'man_rate':
+        inputs.woman_rate.val(100 -$input.val())
+        break;
+      case 'overall_population':
+      case 'childrens':
+      case 'bald':
+        inputs.population.val(
+          inputs.overall_population.val() - 
+          inputs.childrens.val() -
+          inputs.bald.val()
+        )
+        break;
+      case 'vacations':
+      case 'hollidays':
+      case 'sick':
+        inputs.haircutters_working_days.val(
+          365.25 - 
+          inputs.vacations.val() -
+          inputs.hollidays.val() -
+          inputs.sick.val()
+        )
+        break;
+      case 'haircutters_working_hours':
+      case 'coffe_breaks':
+        inputs.haircutters_working_minutes.val(
+          60 * inputs.haircutters_working_hours.val() / 
+          ( 100 / (100 - inputs.coffe_breaks.val()))
+        )
+        break;
+      case 'haircutters_working_minutes':
+        inputs.haircutters_working_hours.val(
+          inputs.haircutters_working_minutes.val() / 60 *
+          ( 100 / (100 - inputs.coffe_breaks.val()))
+        )
+        break;
+      }
+      // I wrote no exceptions there but in live application we must be prepeare for an errors/timeouts
+      // Also loader indicator needed
+      $.ajax({
+        url: "index.php",
+        data: $form.serialize(),
+        dataType: 'json',
+        type: 'POST'
+      }).done(function(_result) {
+        $results.text(_result)
+      });
+    }
+
+    function validate(_id, _obj){
+      var _value = Number(_obj.val())
+      switch(_id)
+      {
+      case 'population':
+        if(_value < 1){_obj.val(tmpValue); return false;}
+        break;
+      case 'man_rate':
+      case 'woman_rate':
+      case 'coffe_breaks':
+        if(_value < 1 || _value > 100){_obj.val(tmpValue); return false;}
+        break;
+      case 'childrens':
+      case 'bald':
+        if(Number(inputs.childrens.val()) + Number(inputs.bald.val()) 
+          > Number(inputs.overall_population.val())){_obj.val(tmpValue); return false;}
+        break; 
+      case 'haircutters_working_days':
+      case 'vacations':
+      case 'hollidays':
+      case 'sick':
+        if(Number(inputs.haircutters_working_days.val()) + Number(inputs.vacations.val()) 
+          + Number(inputs.hollidays.val()) + Number(inputs.sick.val())
+          > 365.25){_obj.val(tmpValue); return false;}
+        break;
+      case 'haircutters_working_hours':
+        if(_value > 24){_obj.val(tmpValue); return false;}
+        break;
+      case 'haircutters_working_minutes':
+        if(_value > 1440){_obj.val(tmpValue); return false;}
+        break;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="API Documentation" version="2.3.1&#10;">
+  <partials/>
+  <file path="Calculator.php" generated-path="Calculator.html" hash="bf6cd8554ff0da409e5cce39ac23af7b" package="">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="HaircuttersCalculator" line="20" package="HaircuttersCalculator">
+      <extends/>
+      <name>Calculator</name>
+      <full_name>\HaircuttersCalculator\Calculator</full_name>
+      <docblock line="20">
+        <description>HaircuttersCalculator doing all calculation logic.</description>
+        <long-description>Depends on paramaters like population HaircuttersCalculator will
+approximate number of haircutters in this country.
+There are methods to change default parameters and get results.</long-description>
+        <tag name="package" line="20" description="HaircuttersCalculator"/>
+        <tag name="author" line="20" description="Arthur Halma" link="mailto:arthur.halma@gmail.com"/>
+        <tag name="version" line="20" description="1.0.0 Very unstable."/>
+        <tag name="since" line="20" description="Class available since Release 1.0.0"/>
+        <tag name="license" line="20" description="This work is licensed under the Creative Commons&#10;Attribution-NonCommercial-NoDerivatives 4.0 International License&#10;To view a copy of this license, visit&#10;http://creativecommons.org/licenses/by-nc-nd/4.0"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="30" package="HaircuttersCalculator">
+        <name>$_arguments</name>
+        <full_name>\HaircuttersCalculator\Calculator::_arguments</full_name>
+        <default>array('population', 'man_rate', 'shear_time_man', 'shear_time_woman', 'haircutters_working_days', 'haircutters_working_minutes')</default>
+        <docblock line="30">
+          <description>List of arguments that user allowed to change.</description>
+          <long-description></long-description>
+          <tag name="var" line="30" description="" type="\HaircuttersCalculator\array();" variable="">
+            <type>\HaircuttersCalculator\array();</type>
+          </tag>
+          <tag name="access" line="30" description="private"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="45" package="HaircuttersCalculator">
+        <name>$_population</name>
+        <full_name>\HaircuttersCalculator\Calculator::_population</full_name>
+        <default>50000000</default>
+        <docblock line="45">
+          <description>The count of population at all.</description>
+          <long-description></long-description>
+          <tag name="var" line="45" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+          <tag name="access" line="45" description="private"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="53" package="HaircuttersCalculator">
+        <name>$_man_rate</name>
+        <full_name>\HaircuttersCalculator\Calculator::_man_rate</full_name>
+        <default>54.0</default>
+        <docblock line="53">
+          <description>The mans rate.</description>
+          <long-description></long-description>
+          <tag name="var" line="53" description="" type="float" variable="">
+            <type>float</type>
+          </tag>
+          <tag name="access" line="53" description="private"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="61" package="HaircuttersCalculator">
+        <name>$_shear_time_man</name>
+        <full_name>\HaircuttersCalculator\Calculator::_shear_time_man</full_name>
+        <default>30</default>
+        <docblock line="61">
+          <description>Approximate time needed to shear man (in minutes).</description>
+          <long-description></long-description>
+          <tag name="var" line="61" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+          <tag name="access" line="61" description="private"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="69" package="HaircuttersCalculator">
+        <name>$_shear_time_woman</name>
+        <full_name>\HaircuttersCalculator\Calculator::_shear_time_woman</full_name>
+        <default>60</default>
+        <docblock line="69">
+          <description>Approximate time needed to shear woman (in minutes).</description>
+          <long-description></long-description>
+          <tag name="var" line="69" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+          <tag name="access" line="69" description="private"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="78" package="HaircuttersCalculator">
+        <name>$_haircutters_working_days</name>
+        <full_name>\HaircuttersCalculator\Calculator::_haircutters_working_days</full_name>
+        <default>345.25</default>
+        <docblock line="78">
+          <description>Approximate working days per year haircutters have.</description>
+          <long-description>Defined as 365.25 days per year minus 20 vacancy days</long-description>
+          <tag name="var" line="78" description="" type="float" variable="">
+            <type>float</type>
+          </tag>
+          <tag name="access" line="78" description="private"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="public" namespace="HaircuttersCalculator" line="87" package="HaircuttersCalculator">
+        <name>$_haircutters_working_minutes</name>
+        <full_name>\HaircuttersCalculator\Calculator::_haircutters_working_minutes</full_name>
+        <default>432</default>
+        <docblock line="87">
+          <description>Approximate working minutes per day haircutters have.</description>
+          <long-description>Defined as 8hrs per day - 10% (coffee brakes)</long-description>
+          <tag name="var" line="87" description="" type="integer" variable="">
+            <type>integer</type>
+          </tag>
+          <tag name="access" line="87" description="private"/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="HaircuttersCalculator" line="136" package="HaircuttersCalculator">
+        <name>__construct</name>
+        <full_name>\HaircuttersCalculator\Calculator::__construct()</full_name>
+        <docblock line="136">
+          <description>Constructor.</description>
+          <long-description>Also can be used to set parameters in few ways.
+With setting parameters as arguments of constructor:
+&lt;code&gt;
+  $var = new Calculator(
+    integer $population,
+    float $man_rate,
+    integer shear_time_man,
+    integer shear_time_woman,
+    float haircutters_working_days,
+    integer haircutters_working_minutes
+  );
+&lt;/code&gt;
+
+&lt;br/&gt;Or pass it with associate array (only parameters that are present
+in array will be changed):
+
+&lt;code&gt;
+  $var = new Calculator(array(
+    'population'                 =&gt;integer $population,
+    'man_rate'                   =&gt;float $man_rate,
+    'shear_time_man'             =&gt;integer shear_time_man,
+    'shear_time_woman'           =&gt;integer shear_time_woman,
+    'haircutters_working_days'   =&gt;float haircutters_working_days,
+    'haircutters_working_minutes'=&gt;integer haircutters_working_minutes
+  ));
+&lt;/code&gt;</long-description>
+          <tag name="param" line="136" description="&lt;p&gt;The count of population at all&#10;                                  or array of parameters.&lt;/p&gt;" type="mixed" variable="$arg1">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="136" description="&lt;p&gt;(optional)   The mans rate.&lt;/p&gt;" type="float" variable="$m_rate">
+            <type>float</type>
+          </tag>
+          <tag name="param" line="136" description="&lt;p&gt;(optional)  Approximate time needed to&lt;/p&gt;&#10;&lt;pre&gt;&lt;code&gt;                              shear man (in minutes).&lt;/code&gt;&lt;/pre&gt;" type="integer" variable="$t_man">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="136" description="&lt;p&gt;(optional)  Approximate time needed to&lt;/p&gt;&#10;&lt;pre&gt;&lt;code&gt;                              shear woman (in minutes).&lt;/code&gt;&lt;/pre&gt;" type="integer" variable="$t_wom">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="136" description="&lt;p&gt;(optional)  Approximate working days per&lt;/p&gt;&#10;&lt;pre&gt;&lt;code&gt;                              year haircutters have.&lt;/code&gt;&lt;/pre&gt;" type="float" variable="$hc_days">
+            <type>float</type>
+          </tag>
+          <tag name="param" line="136" description="&lt;p&gt;(optional) Approximate working minutes per&lt;/p&gt;&#10;&lt;pre&gt;&lt;code&gt;                              day haircutters have.&lt;/code&gt;&lt;/pre&gt;" type="integer" variable="$hc_min">
+            <type>integer</type>
+          </tag>
+          <tag name="access" line="136" description="public"/>
+          <tag name="throws" line="136" description="" type="\HaircuttersCalculator\Exception">
+            <type>\HaircuttersCalculator\Exception</type>
+          </tag>
+          <tag name="since" line="136" description="Class available since Release 1.0.0"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$arg1</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="HaircuttersCalculator" line="169" package="HaircuttersCalculator">
+        <name>setParameter</name>
+        <full_name>\HaircuttersCalculator\Calculator::setParameter()</full_name>
+        <docblock line="169">
+          <description>Parameters setter</description>
+          <long-description>You can set parameters in few ways - the same as __constructor().</long-description>
+          <tag name="param" line="169" description="&lt;p&gt;Name of the parameter that will be changed&lt;/p&gt;&#10;&lt;pre&gt;&lt;code&gt;                Or an associate array (name -&gt; value)&lt;/code&gt;&lt;/pre&gt;" type="mixed" variable="$name">
+            <type>mixed</type>
+          </tag>
+          <tag name="param" line="169" description="&lt;p&gt;(optional) Value that will be set to parameter&lt;/p&gt;" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="see" line="169" description="" link="\HaircuttersCalculator\__construct"/>
+          <tag name="uses" line="169" description="" link="paramSet"/>
+          <tag name="since" line="169" description="Class available since Release 1.0.0"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default>null</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="HaircuttersCalculator" line="202" package="HaircuttersCalculator">
+        <name>getParameter</name>
+        <full_name>\HaircuttersCalculator\Calculator::getParameter()</full_name>
+        <docblock line="202">
+          <description>Parameters getter.</description>
+          <long-description>You can get parameters in few ways:
+List all parameters you want to get
+&lt;code&gt;
+  $obj-&gt;getParameter('paramName1','paramName2', ...'paramNameN');
+&lt;/code&gt;
+
+&lt;br/&gt;Or get all parameters if no arguments passed:&lt;br/&gt;
+
+&lt;code&gt;
+  // List of all parameters
+  $obj-&gt;getParameter();
+&lt;/code&gt;</long-description>
+          <tag name="return" line="202" description="Array of parameters." type="array">
+            <type>array</type>
+          </tag>
+          <tag name="since" line="202" description="Class available since Release 1.0.0"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="HaircuttersCalculator" line="249" package="HaircuttersCalculator">
+        <name>calculate</name>
+        <full_name>\HaircuttersCalculator\Calculator::calculate()</full_name>
+        <docblock line="249">
+          <description>Calculate Haircutters depends on current arguments</description>
+          <long-description>This is not exactly number, rather an demand for hairdressers in
+specified circumstances. Formula:
+&lt;code&gt;
+  mans        = population * ( man_rate / 100 );
+  womans      = population - mans;
+  time_needed = (mans*shear_time_man + womans*shear_time_woman);
+  time_have   = haircutter_have_days * haircutter_have_minutes;
+  result      = ceil( time_needed / time_have ) ;
+&lt;/code&gt;</long-description>
+          <tag name="return" line="249" description="Approximate number of Haircutters" type="integer">
+            <type>integer</type>
+          </tag>
+          <tag name="since" line="249" description="Class available since Release 1.0.0"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="HaircuttersCalculator" line="274" package="HaircuttersCalculator">
+        <name>paramSet</name>
+        <full_name>\HaircuttersCalculator\Calculator::paramSet()</full_name>
+        <docblock line="274">
+          <description>Parameters setter</description>
+          <long-description>Sets parameter value depends on arguments passed.</long-description>
+          <tag name="param" line="274" description="&lt;p&gt;Name of the parameter that will be changed&lt;/p&gt;" type="string" variable="$name">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="274" description="&lt;p&gt;Value that will be set to parameter&lt;/p&gt;" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="274" description="" type="void">
+            <type>void</type>
+          </tag>
+          <tag name="throws" line="274" description="" type="\HaircuttersCalculator\Exception">
+            <type>\HaircuttersCalculator\Exception</type>
+          </tag>
+          <tag name="since" line="274" description="Class available since Release 1.0.0"/>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$name</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <package name="global" full_name="global"/>
+  <package name="HaircuttersCalculator" full_name="HaircuttersCalculator"/>
+  <namespace name="HaircuttersCalculator" full_name="HaircuttersCalculator"/>
+  <deprecated count="0"/>
+</project>
