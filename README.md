@@ -53,6 +53,16 @@ $HC->setParameter(array(
 ));
 ```
 
+### Web UI ###
+
+You can check working copy visiting next URL:
+
+[http://haircutters-calculator-webui.gopagoda.com](http://haircutters-calculator-webui.gopagoda.com)
+
+Or you can host files provided in [ZIP archive](https://github.com/aptik/HaircuttersCalculator/archive/master.zip) and access `index.php`.
+
+### CLI ###
+
 Also I provide an sample of CLI usage in file [cli.php](cli.php):
 
 ```bash
