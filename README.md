@@ -20,12 +20,13 @@ Create an object and run `calculate()` method:
 $HC = new HaircuttersCalculator\Calculator();
 echo $HC->calculate();
 ```
-If everything went well you should see an approximate number of haircutters (**14,684**) needed with default parameters:
+If everything went well you should see an approximate number of haircutters (**176,201**) needed with default parameters:
 
 * Population: **50000000**
 * Mans rate: **54.0**
 * Time needed to shear man: **30**
 * Time needed to shear woman: **60**
+* How often the person shorn during the year: **12**
 * Haircutters working days (in the year): **345.25**
 * Haircutters working minutes per day: **432**
 
@@ -76,10 +77,11 @@ Array
     [man_rate] => 54
     [shear_time_man] => 30
     [shear_time_woman] => 60
+    [shears_per_year] => 12
     [haircutters_working_days] => 345.25
     [haircutters_working_minutes] => 432
 )
-Result: 6 haircutters needed.
+Result: 71 haircutters needed.
 ```
 
 You can pass `--help` parameter to it to get some help:
@@ -93,6 +95,7 @@ Allowed paramaters:
     --man_rate=double                     Default 54
     --shear_time_man=integer              Default 30
     --shear_time_woman=integer            Default 60
+    --shears_per_year=integer             Default 12
     --haircutters_working_days=double     Default 345.25
     --haircutters_working_minutes=integer Default 432
 ```

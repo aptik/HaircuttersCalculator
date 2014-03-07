@@ -14,6 +14,7 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     $this->assertSame(54.0, \PHPUnit_Framework_Assert::readAttribute($var, '_man_rate'));
     $this->assertSame(30, \PHPUnit_Framework_Assert::readAttribute($var, '_shear_time_man'));
     $this->assertSame(60, \PHPUnit_Framework_Assert::readAttribute($var, '_shear_time_woman'));
+    $this->assertSame(12, \PHPUnit_Framework_Assert::readAttribute($var, '_shears_per_year'));
     $this->assertSame(345.25, \PHPUnit_Framework_Assert::readAttribute($var, '_haircutters_working_days'));
     $this->assertSame(432, \PHPUnit_Framework_Assert::readAttribute($var, '_haircutters_working_minutes'));
   }
@@ -23,11 +24,12 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
    */
   public function testSetParametersViaConstructor()
   {
-    $var = new Calculator(1,22.2,'3',4,null,'1');
+    $var = new Calculator(1,22.2,'3',4,2,null,'1');
     $this->assertEquals(1, \PHPUnit_Framework_Assert::readAttribute($var, '_population'));
     $this->assertEquals(22.2, \PHPUnit_Framework_Assert::readAttribute($var, '_man_rate'));
     $this->assertEquals(3, \PHPUnit_Framework_Assert::readAttribute($var, '_shear_time_man'));
     $this->assertEquals(4, \PHPUnit_Framework_Assert::readAttribute($var, '_shear_time_woman'));
+    $this->assertEquals(2, \PHPUnit_Framework_Assert::readAttribute($var, '_shears_per_year'));
     $this->assertEquals(345.25, \PHPUnit_Framework_Assert::readAttribute($var, '_haircutters_working_days'));
     $this->assertEquals(1, \PHPUnit_Framework_Assert::readAttribute($var, '_haircutters_working_minutes'));
   }
@@ -38,7 +40,7 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
    */
   public function testSetParametersViaConstructorException()
   {
-    new Calculator(1,22.2,'3',4,'.5a','1');
+    new Calculator(1,22.2,'3',4,1,'.5a','1');
   }
 
   /**
@@ -139,9 +141,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
    */
   public function testCaclulate()
   {
-    $var = new Calculator(10000,60,30,60,365,480);
+    $var = new Calculator(10000,60,30,60,12,365,480);
     $result = $var->calculate();
-    $this->assertEquals(3, $result);
+    $this->assertEquals(29, $result);
   }
 
 }

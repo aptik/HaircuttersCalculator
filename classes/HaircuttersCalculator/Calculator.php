@@ -32,6 +32,7 @@ class Calculator{
       'man_rate',
       'shear_time_man',
       'shear_time_woman',
+      'shears_per_year',
       'haircutters_working_days',
       'haircutters_working_minutes'
     );
@@ -69,6 +70,13 @@ class Calculator{
     private $_shear_time_woman = 60;
 
     /**
+     * How often the person shorn during the year
+     *
+     * @var integer
+     * @access private
+     */
+    private $_shears_per_year = 12;
+    /**
      * Approximate working days per year haircutters have.
      * Defined as 365.25 days per year minus 20 vacancy days
      *
@@ -99,6 +107,7 @@ class Calculator{
    *     float $man_rate,
    *     integer shear_time_man,
    *     integer shear_time_woman,
+   *     integer shears_per_year,
    *     float haircutters_working_days,
    *     integer haircutters_working_minutes
    *   );
@@ -111,10 +120,11 @@ class Calculator{
    *   $var = new Calculator(array(
    *     'population'                 =>integer $population,
    *     'man_rate'                   =>float $man_rate,
-   *     'shear_time_man'             =>integer shear_time_man,
-   *     'shear_time_woman'           =>integer shear_time_woman,
-   *     'haircutters_working_days'   =>float haircutters_working_days,
-   *     'haircutters_working_minutes'=>integer haircutters_working_minutes
+   *     'shear_time_man'             =>integer $shear_time_man,
+   *     'shear_time_woman'           =>integer $shear_time_woman,
+   *     'shears_per_year'            =>integer $shears_per_year
+   *     'haircutters_working_days'   =>float $haircutters_working_days,
+   *     'haircutters_working_minutes'=>integer $haircutters_working_minutes
    *   ));
    * </code>
    * @param mixed $arg1                The count of population at all 
@@ -124,6 +134,8 @@ class Calculator{
    *                                   shear man (in minutes).
    * @param integer $t_wom (optional)  Approximate time needed to 
    *                                   shear woman (in minutes).
+   * @param integer $spy (optional)    How often the person shorn 
+   *                                   during the year
    * @param float $hc_days (optional)  Approximate working days per 
    *                                   year haircutters have.
    * @param integer $hc_min (optional) Approximate working minutes per
@@ -240,7 +252,7 @@ class Calculator{
    *   womans      = population - mans;
    *   time_needed = (mans*shear_time_man + womans*shear_time_woman);
    *   time_have   = haircutter_have_days * haircutter_have_minutes;
-   *   result      = ceil( time_needed / time_have ) ;
+   *   result      = ceil( time_needed * shear_per_year / time_have ) ;
    * </code>
    * 
    * @return integer Approximate number of Haircutters
@@ -256,8 +268,9 @@ class Calculator{
       $this->_haircutters_working_days
       * $this->_haircutters_working_minutes;
 
-    return ceil(($timeToShearAllMans + $timeToShearAllWomans) 
-            / $haircutterHaveTime);
+    return ceil((($timeToShearAllMans + $timeToShearAllWomans) 
+                * $this->_shears_per_year
+                )/ $haircutterHaveTime);
   }
 
   /**
