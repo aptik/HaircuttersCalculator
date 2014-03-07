@@ -27,7 +27,7 @@ class Calculator{
      * @var array();
      * @access private
      */
-    var $_arguments = array(
+    private $_arguments = array(
       'population',
       'man_rate',
       'shear_time_man',
@@ -42,7 +42,7 @@ class Calculator{
      * @var integer
      * @access private
      */
-    var $_population = 50000000;
+    private $_population = 50000000;
 
     /**
      * The mans rate.
@@ -50,7 +50,7 @@ class Calculator{
      * @var float
      * @access private
      */
-    var $_man_rate = 54.0;
+    private $_man_rate = 54.0;
 
     /**
      * Approximate time needed to shear man (in minutes).
@@ -58,7 +58,7 @@ class Calculator{
      * @var integer
      * @access private
      */
-    var $_shear_time_man = 30;
+    private $_shear_time_man = 30;
 
     /**
      * Approximate time needed to shear woman (in minutes).
@@ -66,7 +66,7 @@ class Calculator{
      * @var integer
      * @access private
      */
-    var $_shear_time_woman = 60;
+    private $_shear_time_woman = 60;
 
     /**
      * Approximate working days per year haircutters have.
@@ -75,7 +75,7 @@ class Calculator{
      * @var float
      * @access private
      */
-    var $_haircutters_working_days = 345.25;
+    private $_haircutters_working_days = 345.25;
 
     /**
      * Approximate working minutes per day haircutters have.
@@ -84,7 +84,7 @@ class Calculator{
      * @var integer
      * @access private
      */
-    var $_haircutters_working_minutes = 432;
+    private $_haircutters_working_minutes = 432;
 
   // }}}
    
