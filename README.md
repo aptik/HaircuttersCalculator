@@ -99,7 +99,7 @@ Allowed paramaters:
 
 ### Tests ###
 
-To run tests you need to use with next command ([PHPUnit](http://phpunit.de/)):
+To run tests you need to use next [PHPUnit](http://phpunit.de/) command:
 
 ```bash
 phpunit --bootstrap tests/BootstrapLoader.php tests/HaircuttersCalculator/CalculatorTest.php
