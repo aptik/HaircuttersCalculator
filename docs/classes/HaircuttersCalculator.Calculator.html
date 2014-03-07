@@ -72,14 +72,18 @@
 </li>
 <li class="nav-header">
 <i title="Properties" class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
                     <ul>
-<li class="property public "><a href="#property__arguments" title="$_arguments() :: List of arguments that user allowed to change."><span class="description"></span><pre>$_arguments</pre></a></li>
-<li class="property public "><a href="#property__haircutters_working_days" title="$_haircutters_working_days() :: Approximate working days per year haircutters have."><span class="description"></span><pre>$_haircutters_working_days</pre></a></li>
-<li class="property public "><a href="#property__haircutters_working_minutes" title="$_haircutters_working_minutes() :: Approximate working minutes per day haircutters have."><span class="description"></span><pre>$_haircutters_working_minutes</pre></a></li>
-<li class="property public "><a href="#property__man_rate" title="$_man_rate() :: The mans rate."><span class="description"></span><pre>$_man_rate</pre></a></li>
-<li class="property public "><a href="#property__population" title="$_population() :: The count of population at all."><span class="description"></span><pre>$_population</pre></a></li>
-<li class="property public "><a href="#property__shear_time_man" title="$_shear_time_man() :: Approximate time needed to shear man (in minutes)."><span class="description"></span><pre>$_shear_time_man</pre></a></li>
-<li class="property public "><a href="#property__shear_time_woman" title="$_shear_time_woman() :: Approximate time needed to shear woman (in minutes)."><span class="description"></span><pre>$_shear_time_woman</pre></a></li>
+<li class="property private "><a href="#property__arguments" title="$_arguments() :: List of arguments that user allowed to change."><span class="description"></span><pre>$_arguments</pre></a></li>
+<li class="property private "><a href="#property__haircutters_working_days" title="$_haircutters_working_days() :: Approximate working days per year haircutters have."><span class="description"></span><pre>$_haircutters_working_days</pre></a></li>
+<li class="property private "><a href="#property__haircutters_working_minutes" title="$_haircutters_working_minutes() :: Approximate working minutes per day haircutters have."><span class="description"></span><pre>$_haircutters_working_minutes</pre></a></li>
+<li class="property private "><a href="#property__man_rate" title="$_man_rate() :: The mans rate."><span class="description"></span><pre>$_man_rate</pre></a></li>
+<li class="property private "><a href="#property__population" title="$_population() :: The count of population at all."><span class="description"></span><pre>$_population</pre></a></li>
+<li class="property private "><a href="#property__shear_time_man" title="$_shear_time_man() :: Approximate time needed to shear man (in minutes)."><span class="description"></span><pre>$_shear_time_man</pre></a></li>
+<li class="property private "><a href="#property__shear_time_woman" title="$_shear_time_woman() :: Approximate time needed to shear woman (in minutes)."><span class="description"></span><pre>$_shear_time_woman</pre></a></li>
+<li class="property private "><a href="#property__shears_per_year" title="$_shears_per_year() :: How often the person shorn during the year"><span class="description"></span><pre>$_shears_per_year</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -140,6 +144,7 @@ With setting parameters as arguments of constructor:
     float $man_rate,
     integer shear_time_man,
     integer shear_time_woman,
+    integer shears_per_year,
     float haircutters_working_days,
     integer haircutters_working_minutes
   );
@@ -152,10 +157,11 @@ in array will be changed):
   $var = new Calculator(array(
     'population'                 =>integer $population,
     'man_rate'                   =>float $man_rate,
-    'shear_time_man'             =>integer shear_time_man,
-    'shear_time_woman'           =>integer shear_time_woman,
-    'haircutters_working_days'   =>float haircutters_working_days,
-    'haircutters_working_minutes'=>integer haircutters_working_minutes
+    'shear_time_man'             =>integer $shear_time_man,
+    'shear_time_woman'           =>integer $shear_time_woman,
+    'shears_per_year'            =>integer $shears_per_year
+    'haircutters_working_days'   =>float $haircutters_working_days,
+    'haircutters_working_minutes'=>integer $haircutters_working_minutes
   ));
 </code></div>
 <table class="table table-bordered">
@@ -192,7 +198,7 @@ specified circumstances. Formula:
   womans      = population - mans;
   time_needed = (mans*shear_time_man + womans*shear_time_woman);
   time_have   = haircutter_have_days * haircutter_have_minutes;
-  result      = ceil( time_needed / time_have ) ;
+  result      = ceil( time_needed * shear_per_year / time_have ) ;
 </code></div>
 <table class="table table-bordered"><tr>
 <th>since</th>
@@ -285,12 +291,12 @@ List all parameters you want to get
 </div>
 <h3>
 <i title="Properties" class="icon-custom icon-property"></i> Properties</h3>
-<a id="property__arguments"> </a><div class="element clickable property public property__arguments" data-toggle="collapse" data-target=".property__arguments .collapse" title="public">
+<a id="property__arguments"> </a><div class="element clickable property private property__arguments" data-toggle="collapse" data-target=".property__arguments .collapse" title="private">
 <h2>List of arguments that user allowed to change.</h2>
 <pre>$_arguments : \HaircuttersCalculator\array();</pre>
 <div class="row collapse"><div class="detail-description">
 <h3>Default</h3>
-<div class="subelement argument"><code>array('population', 'man_rate', 'shear_time_man', 'shear_time_woman', 'haircutters_working_days', 'haircutters_working_minutes')</code></div>
+<div class="subelement argument"><code>array('population', 'man_rate', 'shear_time_man', 'shear_time_woman', 'shears_per_year', 'haircutters_working_days', 'haircutters_working_minutes')</code></div>
 </div></div>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -301,7 +307,7 @@ List all parameters you want to get
 </tr></table>
 </div></div>
 </div>
-<a id="property__haircutters_working_days"> </a><div class="element clickable property public property__haircutters_working_days" data-toggle="collapse" data-target=".property__haircutters_working_days .collapse" title="public">
+<a id="property__haircutters_working_days"> </a><div class="element clickable property private property__haircutters_working_days" data-toggle="collapse" data-target=".property__haircutters_working_days .collapse" title="private">
 <h2>Approximate working days per year haircutters have.</h2>
 <pre>$_haircutters_working_days : float</pre>
 <div class="row collapse"><div class="detail-description">
@@ -317,7 +323,7 @@ List all parameters you want to get
 </tr></table>
 </div></div>
 </div>
-<a id="property__haircutters_working_minutes"> </a><div class="element clickable property public property__haircutters_working_minutes" data-toggle="collapse" data-target=".property__haircutters_working_minutes .collapse" title="public">
+<a id="property__haircutters_working_minutes"> </a><div class="element clickable property private property__haircutters_working_minutes" data-toggle="collapse" data-target=".property__haircutters_working_minutes .collapse" title="private">
 <h2>Approximate working minutes per day haircutters have.</h2>
 <pre>$_haircutters_working_minutes : integer</pre>
 <div class="row collapse"><div class="detail-description">
@@ -333,7 +339,7 @@ List all parameters you want to get
 </tr></table>
 </div></div>
 </div>
-<a id="property__man_rate"> </a><div class="element clickable property public property__man_rate" data-toggle="collapse" data-target=".property__man_rate .collapse" title="public">
+<a id="property__man_rate"> </a><div class="element clickable property private property__man_rate" data-toggle="collapse" data-target=".property__man_rate .collapse" title="private">
 <h2>The mans rate.</h2>
 <pre>$_man_rate : float</pre>
 <div class="row collapse"><div class="detail-description">
@@ -349,7 +355,7 @@ List all parameters you want to get
 </tr></table>
 </div></div>
 </div>
-<a id="property__population"> </a><div class="element clickable property public property__population" data-toggle="collapse" data-target=".property__population .collapse" title="public">
+<a id="property__population"> </a><div class="element clickable property private property__population" data-toggle="collapse" data-target=".property__population .collapse" title="private">
 <h2>The count of population at all.</h2>
 <pre>$_population : integer</pre>
 <div class="row collapse"><div class="detail-description">
@@ -365,7 +371,7 @@ List all parameters you want to get
 </tr></table>
 </div></div>
 </div>
-<a id="property__shear_time_man"> </a><div class="element clickable property public property__shear_time_man" data-toggle="collapse" data-target=".property__shear_time_man .collapse" title="public">
+<a id="property__shear_time_man"> </a><div class="element clickable property private property__shear_time_man" data-toggle="collapse" data-target=".property__shear_time_man .collapse" title="private">
 <h2>Approximate time needed to shear man (in minutes).</h2>
 <pre>$_shear_time_man : integer</pre>
 <div class="row collapse"><div class="detail-description">
@@ -381,12 +387,28 @@ List all parameters you want to get
 </tr></table>
 </div></div>
 </div>
-<a id="property__shear_time_woman"> </a><div class="element clickable property public property__shear_time_woman" data-toggle="collapse" data-target=".property__shear_time_woman .collapse" title="public">
+<a id="property__shear_time_woman"> </a><div class="element clickable property private property__shear_time_woman" data-toggle="collapse" data-target=".property__shear_time_woman .collapse" title="private">
 <h2>Approximate time needed to shear woman (in minutes).</h2>
 <pre>$_shear_time_woman : integer</pre>
 <div class="row collapse"><div class="detail-description">
 <h3>Default</h3>
 <div class="subelement argument"><code>60</code></div>
+</div></div>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__shears_per_year"> </a><div class="element clickable property private property__shears_per_year" data-toggle="collapse" data-target=".property__shears_per_year .collapse" title="private">
+<h2>How often the person shorn during the year</h2>
+<pre>$_shears_per_year : integer</pre>
+<div class="row collapse"><div class="detail-description">
+<h3>Default</h3>
+<div class="subelement argument"><code>12</code></div>
 </div></div>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -405,7 +427,7 @@ List all parameters you want to get
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.3.1
 </a> and<br>
-            generated on 2014-03-06T15:43:12+02:00.<br></footer></div>
+            generated on 2014-03-07T10:47:31+02:00.<br></footer></div>
 </div>
 </body>
 </html>
