@@ -159,6 +159,12 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-2">
+          <label for="shears_per_year">Shears per year:</label>
+          <input type="number" id="shears_per_year" name="shears_per_year" class="form-control"  value="<?php print $params['shears_per_year']; ?>" min="0" step="1" max="12">
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-12">
           <h2>Haircutters needed: <span class="label label-info" id="results"><?php print $results; ?></span></h2>
         </div>
@@ -193,10 +199,10 @@
     var $results = $('#results')
     var tmpValue = null
 
-    $form.on('keydown','input[type=text]',function(_event){
+    $form.on('keydown','input',function(_event){
       tmpValue = $(_event.currentTarget).val();
     })
-    $form.on('keyup','input[type=text]',recalculate)
+    $form.on('keyup','input',recalculate)
 
     function recalculate(_event){
       var $input = $(_event.currentTarget)
@@ -285,6 +291,9 @@
         break;
       case 'haircutters_working_minutes':
         if(_value > 1440){_obj.val(tmpValue); return false;}
+        break;
+      case 'shears_per_year':
+        if(_value > 12 || _value <1){_obj.val(tmpValue); return false;}
         break;
       }
       return true;
